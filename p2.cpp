@@ -29,7 +29,7 @@ request createRandomRequest()
 int main()
 {
    // random number generator
-   srand(time(0));
+   srand(1);
 
    // create a loadbalancer
    loadbalancer lb;
@@ -66,8 +66,9 @@ int main()
          cout << endl;
 		 
          // then give it a new request
-         webarray[currTime % NUM_SERVERS].addRequest(lb.getRequest(), currTime);
-      }
+		if (!lb.isRequestQueueEmpty()) {
+            webarray[currTime % NUM_SERVERS].addRequest(lb.getRequest(), currTime);
+             }
       // every random set of time, or get a new request
       if (rand % 10 == 0) {
          request r = (createRandomRequest());
