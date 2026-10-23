@@ -66,9 +66,9 @@ int main()
          cout << endl;
 		 
          // then give it a new request
-		if (!lb.isRequestQueueEmpty()) {
-            webarray[currTime % NUM_SERVERS].addRequest(lb.getRequest(), currTime);
-             }
+		
+         webarray[currTime % NUM_SERVERS].addRequest(lb.getRequest(), currTime);
+        
       // every random set of time, or get a new request
       if (rand % 10 == 0) {
          request r = (createRandomRequest());
